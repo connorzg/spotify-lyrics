@@ -2,8 +2,6 @@
 
 (EXPERIMENTAL)
 
-Lyrics for Spotify, macOS Only.
-
 Taps into Spotify to get what's currently playing and delivers the lyrics to a tab on your browser.
 
 Implemented in pure python, no dependencies required.
