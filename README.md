@@ -1,8 +1,12 @@
-# Lyrics Spotify (macOS)
+# Lyrics for Spotify (macOS)
 
 (EXPERIMENTAL)
 
-Lyrics for Spotify in a browser tab. macOS Only. Implemented in pure python, no dependencies required.
+Lyrics for Spotify, macOS Only.
+
+Taps into Spotify to get what's currently playing and delivers the lyrics to a tab on your browser.
+
+Implemented in pure python, no dependencies required.
 
 
 ## Running
