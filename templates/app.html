@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Spotify Lyrics</title>
+
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id='app'>
+      <h1 id="title"></h1>
+      <div id="lyrics"></div>
+    </div>
+
+    <script>
+      var BACKEND_URL = "{{ SERVER_URL }}"
+      var CURRENT_TRACK_URL = [BACKEND_URL, 'current_track.json'].join('/')
+
+      function GET(url, onSuccess, onError) {
+        var request = new XMLHttpRequest()
+
+        request.open("GET", url, true)
+        request.onreadystatechange = function () {
+          if (request.readyState != 4)
+            return
+
+          if (request.status != 200) {
+            onError(request.status)
+            return
+          }
+
+          return onSuccess(request.responseText)
+        }
+        request.send("")
+      }
+
+      var TrackPresenter = function(track) {
+        this.track = track
+      }
+
+      TrackPresenter.prototype.getTitle = function() {
+        var artists_names = [];
+
+        for (artist in this.track.artists) {
+          artists_names.push(this.track.artists[artist].name)
+        }
+
+        return [
+          artists_names.join(', '),
+          '-',
+          this.track.name
+        ].join(' ')
+      }
+
+      TrackPresenter.prototype.getLyrics = function() {
+        return this.track.lyrics
+      }
+
+      var App = function() {
+        this.div = document.getElementById('app')
+        this.title = document.getElementById('title')
+        this.lyrics = document.getElementById('lyrics')
+
+        this.MONITOR_POLL_INTERVAL = 5000
+        this.monitoring = false;
+        this.currentTrack = null;
+      }
+
+      App.prototype.initialize = function() {
+        console.log('Initializing app...')
+
+        this.startTrackMonitor()
+      }
+
+      App.prototype.startTrackMonitor = function() {
+        console.log('Starting track monitor...');
+
+        this.monitoring = true
+        this.doMonitor()
+      }
+
+      App.prototype.doMonitor = function() {
+        if (this.monitoring) {
+          // Trigger next run
+          setTimeout(this.doMonitor.bind(this), this.MONITOR_POLL_INTERVAL)
+        }
+
+        console.log('Monitor running...')
+
+        GET(
+          CURRENT_TRACK_URL,
+          this.onGetCurrentTrackSuccess.bind(this),
+          this.onGetCurrentTrackFail.bind(this)
+        )
+      }
+
+      App.prototype.stopTrackMonitor = function() {
+        console.log('Stopping track monitor...')
+
+        this.monitoring = false
+      }
+
+      App.prototype.onGetCurrentTrackSuccess = function(body) {
+        var trackInfo = JSON.parse(body)
+
+        if (this.currentTrack == null ||
+            trackInfo.id != this.currentTrack.id) {
+          console.log('New track detected')
+          this.updateCurrentTrack(trackInfo)
+        } else {
+          console.log("Still playing the same track")
+        }
+      }
+
+      App.prototype.onGetCurrentTrackFail = function(statusCode) {
+        console.log(
+          "Error fetching current track from the backend. Is it still up?",
+          statusCode
+        )
+      }
+
+      App.prototype.updateCurrentTrack = function(newTrack) {
+        this.currentTrack = newTrack
+        this.notifyTrackChanged()
+      }
+
+      App.prototype.notifyTrackChanged = function() {
+        this.render()
+      }
+
+      App.prototype.render = function() {
+        console.log("Rendering...");
+
+        var track = new TrackPresenter(this.currentTrack)
+
+        this.title.innerText = track.getTitle()
+        this.lyrics.innerText = track.getLyrics()
+      }
+
+      window.addEventListener("load", function() {
+        window.app = new App()
+        window.app.initialize()
+      })
+    </script>
+  </body>
+</html>
