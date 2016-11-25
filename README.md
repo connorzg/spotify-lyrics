@@ -2,7 +2,7 @@
 
 (EXPERIMENTAL)
 
-Lyrics for Spotify in a browser tab. macOS Only
+Lyrics for Spotify in a browser tab. macOS Only. Implemented in pure python, no dependencies required.
 
 
 ## Running
