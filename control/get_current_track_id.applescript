@@ -1,8 +1,4 @@
-do shell script "echo " & quoted form of getCurrentPlayingTrackId()
-
-on getCurrentPlayingTrackId()
-    tell application "Spotify"
-        return id of current track as string
-    end tell
-end getCurrentPlayingTrackId
-
+tell application "Spotify"
+    set trackId to id of current track as string
+    do shell script "echo " & quoted form of trackId
+end tell
