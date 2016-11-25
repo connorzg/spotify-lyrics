@@ -35,3 +35,5 @@ with the current track you're listening to on Spotify.
 - Implement other lyrics providers as fallback
 - Screenshots on the README.md
 - Egg packaging for easier distribution (`pip install spotify-lyrics`)
+- Allow custom bind hostname and port on startup, fixed 8000 might be conflicting with people
+- Create a LaunchAgent for macOS
