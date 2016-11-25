@@ -26,4 +26,12 @@ with the current track you're listening to on Spotify.
 
 - Browser tab updates every 5 secs (configurable on app.html)
 - Lyrics from [ChartLyrics](http://www.chartlyrics.com/)
+- For personal use only – lyrics are copyrighted
 
+
+## TODO
+
+- Better presentation for lyrics. Could use a better typography
+- Implement other lyrics providers as fallback
+- Screenshots on the README.md
+- Egg packaging for easier distribution (`pip install spotify-lyrics`)
