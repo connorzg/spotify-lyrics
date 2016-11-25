@@ -1,4 +1,4 @@
-# spotify-lyrics
+# Lyrics Spotify (macOS)
 
 (EXPERIMENTAL)
 
