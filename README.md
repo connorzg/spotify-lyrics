@@ -1,39 +1,40 @@
-# Lyrics for Spotify (macOS)
+# electron-quick-start
 
-(EXPERIMENTAL)
+**Clone and run for a quick way to see Electron in action.**
 
-Taps into Spotify to get what's currently playing and delivers the lyrics to a tab on your browser.
+This is a minimal Electron application based on the [Quick Start Guide](http://electron.atom.io/docs/latest/tutorial/quick-start) within the Electron documentation.
 
-Implemented in pure python, no dependencies required.
+**Use this app along with the [Electron API Demos](http://electron.atom.io/#get-started) app for API code examples to help you get started.**
 
+A basic Electron application needs just these files:
 
-## Running
+- `package.json` - Points to the app's main file and lists its details and dependencies.
+- `main.js` - Starts the app and creates a browser window to render HTML. This is the app's **main process**.
+- `index.html` - A web page to render. This is the app's **renderer process**.
 
-Run on a command-line:
+You can learn more about each of these components within the [Quick Start Guide](http://electron.atom.io/docs/latest/tutorial/quick-start).
 
+## To Use
+
+To clone and run this repository you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
+
+```bash
+# Clone this repository
+git clone https://github.com/electron/electron-quick-start
+# Go into the repository
+cd electron-quick-start
+# Install dependencies
+npm install
+# Run the app
+npm start
 ```
-$ make
-Compiling Spotify control scripts...
-Running lyrics server...
-Lyrics hosted locally at http://0.0.0.0:8000
-```
 
-Point your browser to `http://0.0.0.0:8000` and it should automatically update
-with the current track you're listening to on Spotify.
+Learn more about Electron and its API in the [documentation](http://electron.atom.io/docs/latest).
 
+## Other Example Apps
 
-## Other info
+For more example apps, see the
+[list of boilerplates](http://electron.atom.io/community/#boilerplates)
+created by the awesome electron community.
 
-- Browser tab updates every 5 secs (configurable on app.html)
-- Lyrics from [ChartLyrics](http://www.chartlyrics.com/)
-- For personal use only – lyrics are copyrighted
-
-
-## TODO
-
-- Better presentation for lyrics. Could use a better typography
-- Implement other lyrics providers as fallback
-- Screenshots on the README.md
-- Egg packaging for easier distribution (`pip install spotify-lyrics`)
-- Allow custom bind hostname and port on startup, fixed 8000 might be conflicting with people
-- Create a LaunchAgent for macOS
+#### License [CC0 1.0 (Public Domain)](LICENSE.md)

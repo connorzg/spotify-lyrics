@@ -1,3 +1,4 @@
+import socket
 import time
 import subprocess
 import urllib2
@@ -251,6 +252,18 @@ def fetch_json_from_url(url):
 
 def fetch_from_url(url):
     return urllib2.urlopen(url).read()
+
+
+def is_internet_available():
+    try:
+        host = socket.gethostbyname('www.google.com')
+        socket = socket.create_connection((host, 80), 2)
+        socket.close()
+        return True
+    except:
+        pass
+
+    return False
 
 
 if __name__ == '__main__':
