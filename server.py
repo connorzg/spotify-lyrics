@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+
+import re
 import socket
 import time
 import subprocess
@@ -132,9 +135,10 @@ class LyricsFinder(object):
     def find_for_track(self, track):
         lyrics_cache = LyricsMemoryCache.get_instance()
 
-        track_name = track['name']
+        track_name = clean_nonascii_chars(track['name'])
         artist_names = [artist['name'] for artist in track['artists']]
         collab_name = ','.join(artist_names)
+        collab_name = clean_nonascii_chars(collab_name)
 
         # Try cache
         cache_key = '{} - {}'.format(collab_name, track_name)
@@ -152,6 +156,7 @@ class LyricsFinder(object):
 
         # Individual artists attempts
         for artist in artist_names:
+            artist = clean_nonascii_chars(artist)
             tests.append(quote_plus(artist))
 
         for artist_name in tests:
@@ -264,6 +269,9 @@ def is_internet_available():
         pass
 
     return False
+
+def clean_nonascii_chars(text):
+    return re.sub(r'[^\x00-\x7f]', r' ', text)
 
 
 if __name__ == '__main__':
