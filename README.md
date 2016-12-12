@@ -10,6 +10,8 @@ $ npm install && npm start
 ```
 
 
-## Purposes
+## License
 
-This project is merely an experiment for fun. It's sole intent is to explore building desktop apps with Electron and make use of Spotify's AppleScript API and Spotify's dbus messages. You should run it for nonprofit educational purposes - use it at your own risk. It does not endorse nor support any inappropriate use of lyrics as they are subject to copyright law. Lyrics are provided by ChartLyrics.com whose license is free for non-commercial use.
+This project is merely an experiment for educational purposes. It's sole intent is to explore building desktop apps with Electron and make use of Spotify's AppleScript API and dbus messages. This project's code is in the public domain.
+
+Use it at your own risk. This project does not endorse nor support any inappropriate use of lyrics as they are subject to copyright law. Lyrics are provided by ChartLyrics.com whose license is free for non-commercial use.
