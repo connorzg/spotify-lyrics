@@ -5,6 +5,10 @@ html, body, pre {
   font-size: 100%;
 }
 
+body {
+  -webkit-app-region: drag;
+}
+
 html {
   color: #212121;
 }
