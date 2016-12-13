@@ -1,12 +1,15 @@
-html, body {
+html, body, pre {
   margin: 0px;
   padding: 0px;
   font-family: 'Lato', 'Helvetica Neue', sans-serif;
   font-size: 100%;
+}
+
+html {
   color: #212121;
 }
 
-body {
+body, pre {
   background-color: #121314;
   color: #dfe0e6;
 }

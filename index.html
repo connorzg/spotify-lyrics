@@ -1,25 +1,36 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width"/>
+
+    <link rel=icon href="assets/img/favicon.ico">
+    <link rel="stylesheet" href="assets/css/style.css">
+
     <title>Lyrics for Spotify</title>
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400"
           rel="stylesheet">
-
-    <link href="style.css" rel="stylesheet">
   </head>
 
   <body>
     <div id='app'>
-      <h1 id="track_name"></h1>
-      <h2 id="artist"></h2>
-      <div id="lyrics"></div>
+      <div v-if="track">
+        <h1 id="track_name">{{ track.name }}</h1>
+        <h2 id="artist">
+          <span v-for="(artist, index) in track.artists">{{ artist.name }}<span v-if="index < track.artists.length - 1">, </span>
+          </span>
+        </h2>
+        <pre id="lyrics" v-html="lyrics"></pre>
+      </div>
+
+      <div v-if="!track">
+        <h1>Detecting spotify...</h1>
+      </div>
     </div>
   </body>
 
   <script>
-    require('./renderer.js')
+    require('./assets/js/app.js')
   </script>
 </html>

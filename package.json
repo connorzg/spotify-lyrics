@@ -1,22 +1,25 @@
 {
-  "name": "electron-quick-start",
+  "name": "spotify-lyrics",
   "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "description": "Lyrics for Spotify",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": "https://github.com/dieb/spotify-lyrics",
   "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
+    "spotify",
+    "lyrics"
   ],
-  "author": "GitHub",
+  "author": "Andre Dieb <andre.dieb@gmail.com> (http://andredieb.com)",
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^1.4.1"
+  },
+  "dependencies": {
+    "axios": "^0.15.3",
+    "vue": "^2.1.4",
+    "xmldom": "^0.1.27",
+    "xpath": "0.0.23"
   }
 }
