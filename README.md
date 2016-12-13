@@ -1,4 +1,4 @@
-# Lyrics for Spotify
+![](https://raw.githubusercontent.com/dieb/spotify-lyrics/master/assets/img/logo.png)
 
 Lyrics companion desktop app for Spotify.
 
