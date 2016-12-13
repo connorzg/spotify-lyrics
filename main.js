@@ -73,7 +73,8 @@ function createWindow () {
     width: 800,
     height: 600,
     icon: path.join(__dirname, 'assets/img/icon.png'),
-    title: package.description
+    title: package.description,
+    frame: false
   })
 
   mainWindow.loadURL(url.format({
