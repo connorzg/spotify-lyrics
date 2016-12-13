@@ -9,11 +9,19 @@ Lyrics companion desktop app for Spotify.
 $ npm install && npm start
 ```
 
+## Screenshots
+
+Click to view.
+
+[![screenshot1](https://raw.githubusercontent.com/dieb/spotify-lyrics/master/assets/img/screenshot1.png)](https://raw.githubusercontent.com/dieb/spotify-lyrics/master/assets/img/screenshot1.png)
+[![screenshot2](https://raw.githubusercontent.com/dieb/spotify-lyrics/master/assets/img/screenshot2.png)](https://raw.githubusercontent.com/dieb/spotify-lyrics/master/assets/img/screenshot2.png)
+
 ## Building package
 
 ```bash
 $ make build
 ```
+
 
 ## License
 
