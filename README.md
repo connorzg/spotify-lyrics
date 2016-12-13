@@ -5,6 +5,10 @@ Lyrics companion desktop app for Spotify.
 
 ## Usage
 
+[Download the latest release!](https://github.com/dieb/spotify-lyrics/releases)
+
+If you're on macOS, you can also build it and run it by running these commands:
+
 ```bash
 $ npm install && npm start
 ```
