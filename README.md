@@ -2,7 +2,6 @@
 
 Lyrics companion desktop app for Spotify.
 
-
 ## Usage
 
 [Download the latest release!](https://github.com/dieb/spotify-lyrics/releases)
@@ -26,6 +25,13 @@ Click to view.
 $ make build
 ```
 
+## Contributing
+
+If you want to help, please read the [Contributing](https://github.com/dieb/spotify-lyrics/blob/master/CONTRIBUTING.md) guide.
+
+## History
+
+For detailed changelog, see [Releases](https://github.com/dieb/spotify-lyrics/releases).
 
 ## License
 

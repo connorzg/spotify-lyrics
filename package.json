@@ -14,11 +14,11 @@
   "author": "Andre Dieb <andre.dieb@gmail.com> (http://andredieb.com)",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^1.4.1"
+    "electron": "^1.4.12"
   },
   "dependencies": {
     "axios": "^0.15.3",
-    "vue": "^2.1.4",
+    "vue": "^2.1.6",
     "xmldom": "^0.1.27",
     "xpath": "0.0.23"
   }
