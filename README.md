@@ -2,7 +2,6 @@
 
 Lyrics companion desktop app for Spotify.
 
-
 ## Usage
 
 [Download the latest release!](https://github.com/dieb/spotify-lyrics/releases)
@@ -26,6 +25,17 @@ Click to view.
 $ make build
 ```
 
+## Contributing
+
+1. Fork it!
+2. Create your feature branch: `git checkout -b my-new-feature`
+3. Commit your changes: `git commit -m "Add some feature"`
+4. Push to the branch: `git push origin my-new-feature`
+5. Submit a pull request  :)
+
+## History
+
+For detailed changelog, see [Releases](https://github.com/dieb/spotify-lyrics/releases).
 
 ## License
 
