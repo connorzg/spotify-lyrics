@@ -15,7 +15,8 @@ html {
   color: #212121;
 }
 
-body, pre {
+body,
+pre {
   background-color: #121314;
   color: #dfe0e6;
 }
@@ -107,7 +108,7 @@ h2 {
 }
 
 #artist {
-    color: #88898c;
+  color: #88898c;
 }
 
 #lyrics {
