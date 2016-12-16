@@ -1,7 +1,9 @@
-html, body, pre {
-  margin: 0px;
-  padding: 0px;
-  font-family: 'Lato', 'Helvetica Neue', sans-serif;
+html,
+body,
+pre {
+  margin: 0;
+  padding: 0;
+  font-family: "Lato", "Helvetica Neue", sans-serif;
   font-size: 100%;
 }
 
@@ -13,12 +15,19 @@ html {
   color: #212121;
 }
 
-body, pre {
+body,
+pre {
   background-color: #121314;
   color: #dfe0e6;
 }
 
-body, h1, h2, h3, h4, h5, h6 {
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-size-adjust: 0.5;
 }
 
@@ -43,7 +52,8 @@ body, h1, h2, h3, h4, h5, h6 {
   }
 }
 
-h1, h2 {
+h1,
+h2 {
   padding: 0;
   margin: 0;
   font-weight: 100;
@@ -98,7 +108,7 @@ h2 {
 }
 
 #artist {
-    color: #88898c;
+  color: #88898c;
 }
 
 #lyrics {
