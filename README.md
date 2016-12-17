@@ -31,7 +31,7 @@ Click to view.
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request  :)
 
-If you want to help, feel free to browse our [Issues](../issues) and [PRs](../pulls).
+If you want to help, feel free to browse our [Issues](../../issues) and [PRs](../../pulls).
 
 
 ### Development
@@ -45,7 +45,7 @@ If you want to help, feel free to browse our [Issues](../issues) and [PRs](../pu
 
 ## History
 
-For detailed changelog, see [Releases](https://github.com/dieb/spotify-lyrics/releases).
+For detailed changelogs, see [Releases](../../releases).
 
 ## License
 
