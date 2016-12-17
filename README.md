@@ -2,17 +2,18 @@
 
 [![Build Status](https://travis-ci.org/dieb/spotify-lyrics.svg?branch=master)](https://travis-ci.org/dieb/spotify-lyrics)
 
-Lyrics companion desktop app for Spotify.
+Lyrics companion desktop app for Spotify. Currently supports macOS and Linux.
 
-## Usage
 
-[Download the latest release!](https://github.com/dieb/spotify-lyrics/releases)
+## Installation
 
-If you're on macOS, you can also build it and run it by running these commands:
+[Download the latest release!](https://github.com/dieb/spotify-lyrics/releases/latest)
 
-```bash
-$ npm install && npm start
-```
+
+## How to use
+
+Open `Lyrics for Spotify` alongside with Spotify.
+
 
 ## Screenshots
 
@@ -21,11 +22,6 @@ Click to view.
 [![screenshot1](https://raw.githubusercontent.com/dieb/spotify-lyrics/master/docs/screenshot1-th.png)](https://raw.githubusercontent.com/dieb/spotify-lyrics/master/docs/screenshot1.png)
 [![screenshot2](https://raw.githubusercontent.com/dieb/spotify-lyrics/master/docs/screenshot2-th.png)](https://raw.githubusercontent.com/dieb/spotify-lyrics/master/docs/screenshot2.png)
 
-## Building package
-
-```bash
-$ make build
-```
 
 ## Contributing
 
@@ -34,6 +30,18 @@ $ make build
 3. Commit your changes: `git commit -m "Add some feature"`
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request  :)
+
+If you want to help, feel free to browse our [Issues](../issues) and [PRs](../pulls).
+
+
+### Development
+
+1. `npm install` should install everything you need
+2. Run `npm run dev` in a terminal window and leave it open (webpack builder)
+3. Run `npm run app` in another terminal window. This should bring up the app window
+4. Opening Chrome's devTools should work with the usual hotkey. If it doesn't, you can either open it through the menu `View -> Toggle Developer Tools` or change `app/index.js` to open it up
+5. (macOS) you'll need to `make build` to compile the required applescripts
+
 
 ## History
 
