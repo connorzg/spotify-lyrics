@@ -14,4 +14,3 @@ switch (platform) {
     console.log('Platform not supported', platform)
     break
 }
-

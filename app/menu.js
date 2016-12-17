@@ -1,6 +1,6 @@
 module.exports = function() {
   const {Menu, shell} = require('electron')
-  const package = require('./package.json')
+  const package = require('../package.json')
 
   const template = [
     {

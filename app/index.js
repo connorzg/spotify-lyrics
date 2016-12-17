@@ -1,11 +1,9 @@
 const {app, Menu, BrowserWindow} = require('electron')
-
-const path = require('path')
-const url = require('url')
-const package = require('./package.json')
+const {resolve, isAbsolute} = require('path');
+const isDev = require('electron-is-dev');
 
 const MenuBuilder = require('./menu')
-const TrackMonitor = require('./src/track-monitor')
+const TrackMonitor = require('./track-monitor')
 
 if (TrackMonitor === null) {
   console.log("Platform not supported")
@@ -15,21 +13,24 @@ if (TrackMonitor === null) {
 let mainWindow
 let trackMonitor
 
+const url = 'file://' + resolve(
+  isDev ? __dirname : app.getAppPath(),
+  'index.html'
+);
+
 function createWindow () {
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
-    icon: path.join(__dirname, 'assets/img/icon.png'),
-    title: package.description,
-    frame: false,
+    titleBarStyle: 'hidden-inset',
+    title: 'Lyrics for Spotify.app',
+    frame: process.platform === 'darwin',
+    transparent: true,
+    icon: resolve(__dirname, 'static/icon.png'),
     backgroundColor: "#121314"
   })
 
-  mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'index.html'),
-    protocol: 'file:',
-    slashes: true
-  }))
+  mainWindow.loadURL(url)
 
   mainWindow.on('closed', function () {
     mainWindow = null
@@ -45,7 +46,9 @@ function notifyRendererTrackChanged(newTrackId) {
   mainWindow.webContents.executeJavaScript("window.app._mainProcess_setCurrentTrackId(\"" + newTrackId + "\")")
 }
 
-app.on('ready', function () {
+app.commandLine.appendSwitch('js-flags', '--harmony');
+
+app.on('ready', () => {
   createWindow()
   trackMonitor = new TrackMonitor()
 
@@ -54,6 +57,14 @@ app.on('ready', function () {
 
   trackMonitor.start()
   trackMonitor.on('track-changed', notifyRendererTrackChanged)
+
+  // If file is dropped onto the terminal window, navigate event is prevented
+  mainWindow.webContents.on('will-navigate', (event, url) => {
+    const protocol = typeof url === 'string' && parseUrl(url).protocol
+    if (protocol === 'file:') {
+      event.preventDefault()
+    }
+  })
 })
 
 app.on('window-all-closed', function () {
@@ -69,3 +80,5 @@ app.on('activate', function () {
     createWindow()
   }
 })
+
+
