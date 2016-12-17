@@ -1,4 +1,4 @@
-![](https://raw.githubusercontent.com/dieb/spotify-lyrics/master/assets/img/logo.png)
+![](https://raw.githubusercontent.com/dieb/spotify-lyrics/master/docs/logo.png)
 
 [![Build Status](https://travis-ci.org/dieb/spotify-lyrics.svg?branch=master)](https://travis-ci.org/dieb/spotify-lyrics)
 
@@ -18,8 +18,8 @@ $ npm install && npm start
 
 Click to view.
 
-[![screenshot1](https://raw.githubusercontent.com/dieb/spotify-lyrics/master/assets/img/screenshot1-th.png)](https://raw.githubusercontent.com/dieb/spotify-lyrics/master/assets/img/screenshot1.png)
-[![screenshot2](https://raw.githubusercontent.com/dieb/spotify-lyrics/master/assets/img/screenshot2-th.png)](https://raw.githubusercontent.com/dieb/spotify-lyrics/master/assets/img/screenshot2.png)
+[![screenshot1](https://raw.githubusercontent.com/dieb/spotify-lyrics/master/docs/screenshot1-th.png)](https://raw.githubusercontent.com/dieb/spotify-lyrics/master/docs/screenshot1.png)
+[![screenshot2](https://raw.githubusercontent.com/dieb/spotify-lyrics/master/docs/screenshot2-th.png)](https://raw.githubusercontent.com/dieb/spotify-lyrics/master/docs/screenshot2.png)
 
 ## Building package
 
