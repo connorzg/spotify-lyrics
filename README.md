@@ -1,5 +1,7 @@
 ![](https://raw.githubusercontent.com/dieb/spotify-lyrics/master/assets/img/logo.png)
 
+[![Build Status](https://travis-ci.org/dieb/spotify-lyrics.svg?branch=master)](https://travis-ci.org/dieb/spotify-lyrics)
+
 Lyrics companion desktop app for Spotify.
 
 ## Usage
