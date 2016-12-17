@@ -2,71 +2,18 @@ const {app, Menu, BrowserWindow} = require('electron')
 
 const path = require('path')
 const url = require('url')
-const spawn = require('child_process').spawn;
 const package = require('./package.json')
 
-const template = [
-  {
-    label: 'View',
-    submenu: [
-      {role: 'reload'},
-      {role: 'toggledevtools'},
-      {type: 'separator'},
-      {role: 'resetzoom'},
-      {role: 'zoomin'},
-      {role: 'zoomout'},
-      {type: 'separator'},
-      {role: 'togglefullscreen'}
-    ]
-  },
-  {
-    role: 'window',
-    submenu: [
-      {role: 'minimize'},
-      {role: 'close'}
-    ]
-  },
-  {
-    role: 'help',
-    submenu: [
-      {
-        label: 'Learn More',
-        click () {
-          require('electron').shell.openExternal(package.repository)
-        }
-      }
-    ]
-  }
-]
+const MenuBuilder = require('./menu')
+const TrackMonitor = require('./src/track-monitor')
 
-if (process.platform === 'darwin') {
-  template.unshift({
-    label: package.description,
-    submenu: [
-      {role: 'about'},
-      {type: 'separator'},
-      {role: 'services', submenu: []},
-      {type: 'separator'},
-      {role: 'hide'},
-      {role: 'hideothers'},
-      {role: 'unhide'},
-      {type: 'separator'},
-      {role: 'quit'}
-    ]
-  })
-
-  // Window menu.
-  template[3].submenu = [
-    {label: 'Close', accelerator: 'CmdOrCtrl+W', role: 'close'},
-    {label: 'Minimize', accelerator: 'CmdOrCtrl+M', role: 'minimize'},
-    {label: 'Zoom', role: 'zoom'},
-    {type: 'separator'},
-    {label: 'Bring All to Front', role: 'front'}
-  ]
+if (TrackMonitor === null) {
+  console.log("Platform not supported")
+  process.exit(-1)
 }
 
-const menu = Menu.buildFromTemplate(template)
 let mainWindow
+let trackMonitor
 
 function createWindow () {
   mainWindow = new BrowserWindow({
@@ -74,7 +21,8 @@ function createWindow () {
     height: 600,
     icon: path.join(__dirname, 'assets/img/icon.png'),
     title: package.description,
-    frame: false
+    frame: false,
+    backgroundColor: "#121314"
   })
 
   mainWindow.loadURL(url.format({
@@ -83,17 +31,36 @@ function createWindow () {
     slashes: true
   }))
 
+  mainWindow.toggleDevTools()
+
   mainWindow.on('closed', function () {
     mainWindow = null
+    trackMonitor.stop()
+    trackMonitor = null
   })
+}
+
+function notifyRendererTrackChanged(newTrackId) {
+  if (mainWindow === null) return
+
+  // Hack to communicate the new track id to the renderer process
+  mainWindow.webContents.executeJavaScript("window.app._mainProcess_setCurrentTrackId(\"" + newTrackId + "\")")
 }
 
 app.on('ready', function () {
   createWindow()
+  trackMonitor = new TrackMonitor()
+
+  let menu = MenuBuilder()
   Menu.setApplicationMenu(menu)
+
+  trackMonitor.start()
+  trackMonitor.on('track-changed', notifyRendererTrackChanged)
 })
 
 app.on('window-all-closed', function () {
+  trackMonitor.stop()
+
   if (process.platform !== 'darwin') {
     app.quit()
   }

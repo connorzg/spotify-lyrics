@@ -1,11 +1,11 @@
+const os = require('os')
 const Vue = require('./vue.min.js')
 
 const ChartLyrics = require('./chartlyrics.js')
 const SpotifyAPI = require('./spotify_api.js')
-const SpotifyLocalControl = require('./spotify_local_control.js')
-const TRACK_DETECTION_POLL_MS = 4000
 
-var app = new Vue({
+
+window.app = new Vue({
   el: '#app',
   data: {
     track: null,
@@ -25,20 +25,6 @@ var app = new Vue({
     }
   },
   methods: {
-    monitorTrack: function() {
-      let self = this
-
-      this.spotifyLocalControl.getCurrentTrackId(function(err, trackId) {
-        if (err) {
-          self.trackId = null
-        } else {
-          self.trackId = trackId
-        }
-      })
-
-      setTimeout(this.monitorTrack, TRACK_DETECTION_POLL_MS)
-    },
-
     refreshTrack: function() {
       let self = this
 
@@ -115,12 +101,33 @@ var app = new Vue({
         }
       )
     },
+
+    fixLinuxRenderingIssue: function() {
+      /* Hacks to fix HDPI font rendering issues on linux */
+      const {webFrame} = require('electron')
+
+      // Zoom in webframe
+      webFrame.setZoomFactor(2)
+
+      // Apply fix classes. Zooms out
+      document.documentElement.className = "html-linux"
+      document.body.className = "body-linux"
+      document.getElementById('artist').className = 'artist-linux'
+    },
+
+    _mainProcess_setCurrentTrackId: function(newTrackId) {
+      this.trackId = newTrackId
+    }
   },
 
   created: function() {
     this.spotifyAPI = new SpotifyAPI()
-    this.spotifyLocalControl = new SpotifyLocalControl()
     this.chartLyrics = new ChartLyrics()
-    this.monitorTrack()
+
+    if (os.platform() == 'linux') {
+      this.fixLinuxRenderingIssue()
+    }
   }
 })
+
+
