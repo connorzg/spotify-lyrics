@@ -17,6 +17,7 @@ let TrackMonitor = function() {
 TrackMonitor.prototype.__proto__ = EventEmitter.prototype;
 
 TrackMonitor.prototype.start = function() {
+  this.running = true
   this.doMonitor()
 }
 
@@ -28,7 +29,7 @@ TrackMonitor.prototype.doMonitor = function() {
   this._getCurrentTrack()
 
   if (this.running) {
-    setTimeout(this.doMonitor, MONITOR_POLL_INTERVAL)
+    setTimeout(this.doMonitor.bind(this), MONITOR_POLL_INTERVAL)
   }
 }
 
@@ -39,7 +40,7 @@ TrackMonitor.prototype.stop = function() {
 TrackMonitor.prototype._getCurrentTrack = function() {
   exec(GET_TRACK_COMMAND, function(err, stdout, stderr) {
     if (err) {
-      callback(err)
+      console.log("Could not fetch current track.", err)
     } else {
       stdout = stdout.replace('\n', '')
       let trackId = stdout.split(':').pop()
