@@ -14,7 +14,8 @@
   "author": "Andre Dieb <andre.dieb@gmail.com> (http://andredieb.com)",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^1.4.12"
+    "electron": "^1.4.12",
+    "spectron": "^3.4.0"
   },
   "dependencies": {
     "axios": "^0.15.3",
