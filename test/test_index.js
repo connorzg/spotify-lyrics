@@ -1,12 +1,12 @@
-const path = require('path')
-const Application = require('spectron').Application
-const assert = require('assert')
+var path = require('path')
+var Application = require('spectron').Application
+var assert = require('assert')
 
 describe('application launch', function () {
   this.timeout(10000)
 
   beforeEach(function () {
-    let pathToBinary;
+    var pathToBinary;
 
     switch (process.platform) {
       case 'linux':
