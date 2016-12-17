@@ -1,13 +1,16 @@
 {
   "name": "spotify-lyrics",
+  "productName": "Lyrics for Spotify",
+  "main": "app/index.js",
   "version": "1.1.0",
   "description": "Lyrics for Spotify",
-  "main": "main.js",
   "scripts": {
     "test": "mocha",
     "app": "electron app",
     "dev": "webpack -w",
     "build": "cross-env NODE_ENV=production webpack",
+    "prepush": "npm test",
+    "postinstall": "install-app-deps",
     "pack": "npm run build && build --dir && babel --no-comments --compact --minified --out-file app/dist/bundle.js app/dist/bundle.js",
     "dist": "npm run build && build"
   },
@@ -33,6 +36,27 @@
     },
     "mac": {
       "category": "public.app-category.music"
+    },
+    "dmg": {
+      "backgroundColor": "#f8f9fa",
+      "icon": "build/icon.icns",
+      "iconTextSize": "13",
+      "window": {
+        "width": 485,
+        "height": 330
+      },
+      "contents": [
+        {
+            "x": 100,
+            "y": 100
+        },
+        {
+          "x": 375,
+          "y": 100,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
     }
   },
   "repository": "dieb/spotify-lyrics",
