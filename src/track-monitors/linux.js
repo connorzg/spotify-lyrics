@@ -21,8 +21,6 @@ TrackMonitor.prototype.start = function() {
 }
 
 TrackMonitor.prototype.stop = function() {
-  console.log('Stopping track monitor')
-
   process.nextTick(function() {
     this.monitorProcess.kill(true)
   }.bind(this))
