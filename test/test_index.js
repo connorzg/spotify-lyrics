@@ -6,7 +6,7 @@ describe('application launch', function () {
 
   beforeEach(function () {
     this.app = new Application({
-      path: '/Applications/spotify-lyrics.app/Contents/MacOS/spotify-lyrics'
+      path: '/Applications/Lyrics\ for\ Spotify.app/Contents/MacOS/Lyrics\ for\ Spotify'
     })
     return this.app.start()
   })
