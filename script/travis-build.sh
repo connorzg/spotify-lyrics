@@ -8,6 +8,8 @@ fi
 
 node --version
 npm --version
+ls -la
+ls -laR dist/
 
 npm install
 npm test
