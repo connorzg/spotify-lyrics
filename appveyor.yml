@@ -27,9 +27,9 @@ shallow_clone: true
 test_script:
   - node --version
   - npm --version
+  - npm run pack
+  - dir /s
   - npm run test
 
 on_success:
-  - npm run pack
-  - dir /s
   - ps: ls .\dist\win\*.exe | % { Push-AppveyorArtifact $_.FullName }
