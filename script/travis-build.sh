@@ -6,7 +6,7 @@ if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
   sleep 3
 fi
 
-if [[ "$TRAVIS_OS_NAME" == "darwin" ]]; then
+if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
   make build
 fi
 
