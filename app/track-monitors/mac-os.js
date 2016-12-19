@@ -4,7 +4,7 @@ const path = require('path')
 
 const DARWIN_SCRIPT_PATH = path.join(
   __dirname,
-  "../../control/get_current_track_id.scpt"
+  "./macos/get_current_track_id.scpt"
 ).replace(/ /g, '\\ ')
 
 const GET_TRACK_COMMAND = "osascript " + DARWIN_SCRIPT_PATH
