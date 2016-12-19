@@ -6,8 +6,13 @@ if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
   sleep 3
 fi
 
+if [[ "$TRAVIS_OS_NAME" == "darwin" ]]; then
+  make build
+fi
+
 node --version
 npm --version
+npm run pack
 ls -la
 ls -laR dist/
 
