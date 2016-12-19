@@ -28,7 +28,6 @@ test_script:
   - node --version
   - npm --version
   - npm run pack
-  - dir /s
   - npm run test
 
 on_success:
