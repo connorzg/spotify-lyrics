@@ -1,6 +1,7 @@
 ![](https://raw.githubusercontent.com/dieb/spotify-lyrics/master/docs/logo.png)
 
 [![Build Status](https://travis-ci.org/dieb/spotify-lyrics.svg?branch=master)](https://travis-ci.org/dieb/spotify-lyrics)
+[![Build status](https://ci.appveyor.com/api/projects/status/mpo2ekyyeqxvo59b?svg=true)](https://ci.appveyor.com/project/dieb/spotify-lyrics)
 [![Downloads](https://img.shields.io/github/downloads/dieb/spotify-lyrics/latest/total.svg)](https://github.com/dieb/spotify-lyrics/releases/latest)
 [![GitHub release](https://img.shields.io/github/release/dieb/spotify-lyrics.svg)](https://github.com/dieb/spotify-lyrics/releases/latest)
 [![Dependencies](https://img.shields.io/david/dieb/spotify-lyrics.svg)]()
