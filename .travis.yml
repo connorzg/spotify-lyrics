@@ -42,6 +42,3 @@ before_script:
   - npm prune
 
 script: ./script/travis-build.sh
-
-after_success:
-  - npm run dist

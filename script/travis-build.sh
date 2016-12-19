@@ -13,8 +13,6 @@ fi
 node --version
 npm --version
 npm run pack
-ls -la
-ls -laR dist/
 
 npm install
 npm test
