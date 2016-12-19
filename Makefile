@@ -14,3 +14,9 @@ compile_spotify_applescript:
 
 clean:
 	@find . -name *.scpt -delete
+
+install_packaging_deps_macos:
+	@brew install gnu-tar graphicsmagick xz
+
+install_packaging_deps_linux:
+	@sudo apt-get install --no-install-recommends -y icnsutils graphicsmagick xz-utils
