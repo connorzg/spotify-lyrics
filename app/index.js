@@ -10,18 +10,18 @@ if (TrackMonitor === null) {
   process.exit(-1)
 }
 
-let mainWindow
-let trackMonitor
-
 const url = 'file://' + resolve(
   isDev ? __dirname : (app.getAppPath() + "/app/"),
   'index.html'
 );
 
+let mainWindow
+let trackMonitor
+
 function createWindow () {
   mainWindow = new BrowserWindow({
-    width: 480,
-    height: 500,
+    width: 540,
+    height: 420,
     titleBarStyle: 'hidden-inset',
     title: 'Lyrics for Spotify.app',
     frame: process.platform === 'darwin',
@@ -30,9 +30,8 @@ function createWindow () {
     backgroundColor: "#121314"
   })
   mainWindow.loadURL(url)
-  mainWindow.on('closed', function () {
+  mainWindow.on('closed', () => {
     mainWindow = null
-
     if (trackMonitor != null) {
       trackMonitor.stop()
       trackMonitor = null
