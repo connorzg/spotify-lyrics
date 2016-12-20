@@ -7,6 +7,7 @@
 
     <link rel=icon href="./dist/assets/img/favicon.ico">
     <link rel="stylesheet" href="./dist/assets/css/style.css">
+    <link rel="stylesheet" href="./dist/assets/vendor/css/icono.min.css">
 
     <title>Lyrics for Spotify</title>
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400"
@@ -15,18 +16,13 @@
 
   <body>
     <div id='app'>
-      <div v-if="track">
-        <h1 id="track_name">{{ track.name }}</h1>
-        <h2 id="artist">
-          <span v-for="(artist, index) in track.artists">{{ artist.name }}<span v-if="index < track.artists.length - 1">, </span>
-          </span>
-        </h2>
-        <pre id="lyrics" v-html="lyrics"></pre>
-      </div>
-
-      <div v-if="!track">
-        <h1>Detecting spotify...</h1>
-      </div>
+      <transition name="component-fade" mode="out-in">
+        <component :is="view"
+                   :track="track"
+                   :trackId="trackId"
+                   :lyrics="lyrics">
+        </component>
+      </transition>
     </div>
   </body>
 

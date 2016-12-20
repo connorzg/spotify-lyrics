@@ -33,20 +33,13 @@ h6 {
 #app {
   padding: 2.5em 2em;
   font-weight: normal;
+}
 
+#lyrics {
   font-size: 1em;
   /* equivalent to 16px */
   line-height: 1.25;
   /* equivalent to 20px */
-}
-
-@media (min-width: 43.75em) {
-  #app {
-    font-size: 1em;
-    /* equivalent to 16px */
-    line-height: 1.375;
-    /* equivalent to 22px */
-  }
 }
 
 h1,
@@ -63,11 +56,31 @@ h1 {
   /* 45px / 36px */
 }
 
+h2 {
+  font-size: 1.625em;
+  /* 1.625x body copy size = 26px */
+  line-height: 1.15384615;
+  /* 30px / 26px */
+}
+
 @media (min-width: 43.75em) {
+  #lyrics {
+    font-size: 1em;
+    /* equivalent to 16px */
+    line-height: 1.375;
+    /* equivalent to 22px */
+  }
+
   h1 {
     font-size: 2.5em;
     /* 2.5x body copy size = 40px */
     line-height: 1.125;
+  }
+
+  h2 {
+    font-size: 2em;
+    /* 2x body copy size = 32px */
+    line-height: 1.25;
   }
 }
 
@@ -79,24 +92,7 @@ h1 {
     /* keep to a multiple of the 20px line height
     and something more appropriate for display headings */
   }
-}
 
-h2 {
-  font-size: 1.625em;
-  /* 1.625x body copy size = 26px */
-  line-height: 1.15384615;
-  /* 30px / 26px */
-}
-
-@media (min-width: 43.75em) {
-  h2 {
-    font-size: 2em;
-    /* 2x body copy size = 32px */
-    line-height: 1.25;
-  }
-}
-
-@media (min-width: 56.25em) {
   h2 {
     font-size: 2.25em;
     /* 2.25x body copy size = 36px */
@@ -132,4 +128,51 @@ h2 {
 .artist-linux {
   text-shadow: #88898c 0 0;
   -webkit-text-stroke: 0.4px #88898c;
+}
+
+.component-fade-enter-active, .component-fade-leave-active {
+  transition: opacity 2s ease;
+}
+.component-fade-enter, .component-fade-leave-active {
+  opacity: 0;
+}
+
+/* Detecting spotify component */
+#detecting-spotify {
+  margin-top: 10%;
+  text-align: center;
+}
+
+#detecting-spotify h1, #detecting-spotify div {
+  display: block;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  margin: 80px auto;
+  background-color: #656565;
+
+  border-radius: 100%;
+  -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+  animation: sk-scaleout 1.0s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-scaleout {
+  0% { -webkit-transform: scale(0) }
+  100% {
+    -webkit-transform: scale(1.0);
+    opacity: 0;
+  }
+}
+
+@keyframes sk-scaleout {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 100% {
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+    opacity: 0;
+  }
 }
