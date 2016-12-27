@@ -8,10 +8,8 @@ export default class LyricsWikia {
 
     axios.get(url)
       .then((response) => {
-        let data = JSON.parse(
-          response.data.replace(/'/g, '"')
-                       .replace('song = ', ''))
-        callback(null, [data.url])
+        let url = response.data.match(/'url':'(.*)'/)[1]
+        callback(null, [url])
       })
       .catch((error) => {
         callback(error)
