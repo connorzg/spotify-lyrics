@@ -18,7 +18,6 @@
   Vue.use(AsyncComputed)
 
   export default {
-    components: { Spinner },
     data () {
       return {
         lyrics: null,

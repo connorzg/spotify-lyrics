@@ -1,28 +1,23 @@
 import ChartlyricsProvider from './lyrics-providers/chartlyrics'
+import LyricsWikia from './lyrics-providers/lyrics-wikia'
 
 export default class LyricProvider {
   constructor () {
     this.artistCandidates = []
-    this.chartlyricsProvider = new ChartlyricsProvider()
+    // this.provider = new ChartlyricsProvider()
+    this.provider = new LyricsWikia()
   }
 
   getArtistCandidates (artists) {
     let candidates = []
+    let artistNames = artists.map((cur, i, a) => a[i].name)
 
     if (artists.length > 1) {
-      let collabName = artists
-        .map((cur, i, a) => a[i].name)
-        .join(', ')
-
-      candidates.push(collabName)
+      candidates.push(artistNames.join(', '))
     }
 
-    for (var artist in artists) {
-      candidates.push(artists[artist].name)
-    }
-
+    Array.prototype.push.apply(candidates, artistNames)
     candidates = candidates.reverse()
-
     return candidates
   }
 
@@ -36,35 +31,29 @@ export default class LyricProvider {
   searchLyrics () {
     if (!Array.isArray(this.artistCandidates) ||
         this.artistCandidates.length == 0) {
-      this.artistCandidates = null
       this.responseCallback(new Error("Lyrics not found"))
-      this.responseCallback = null
       return;
     }
 
     let currentCandidate = encodeURIComponent(this.artistCandidates.pop())
 
     // TODO: refactor this 😂
-    this.chartlyricsProvider.searchLyrics(
+    this.provider.search(
       currentCandidate,
       this.trackName,
       function (error, results) {
         if (error) {
           setTimeout(this.searchLyrics.bind(this), 100)
         } else {
-          let payload = results[0]
+          let id = results[0]
 
-          this.chartlyricsProvider.getLyricsById(
-            payload.lyricId,
-            payload.lyricChecksum,
+          this.provider.getLyricsById(id,
             function (error, lyrics) {
               if (error) {
                 setTimeout(this.searchLyrics.bind(this), 200)
               } else {
                 this.artistCandidates = null
-                console.log("got lyrics", lyrics)
                 this.responseCallback(null, lyrics)
-                this.responseCallback = null
               }
             }.bind(this)
           )

@@ -13,7 +13,7 @@ export default class ChartLyrics {
     return new DOMParser().parseFromString(xml).documentElement
   }
 
-  searchLyrics (artistName, trackName, callback) {
+  search (artistName, trackName, callback) {
     axios.get(
       CHARTLYRICS_SEARCH_URL,
       { params: { artist: artistName, song: trackName } }
@@ -45,7 +45,9 @@ export default class ChartLyrics {
     })
   }
 
-  getLyricsById (lyricId, lyricChecksum, callback) {
+  getLyricsById (id, callback) {
+    let lyricId, lyricChecksum = id
+
     axios.get(CHARTLYRICS_GET_URL, {
       params: {
         lyricId: lyricId,
