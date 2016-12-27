@@ -11,7 +11,7 @@ indent_style = space
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-[*.js]
+[*.{js,vue,html,css}]
 indent_size = 2
 
 [*.md]
@@ -20,9 +20,6 @@ trim_trailing_whitespace = false
 [Makefile]
 indent_size = 4
 indent_style = tab
-
-[*.{html,css}]
-indent_size = 2
 
 [{package.json,circle.yml}]
 # The indent size used in the `package.json` file cannot be changed
