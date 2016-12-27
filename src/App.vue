@@ -28,7 +28,6 @@ export default {
     return {
       track: null,
       trackId: null,
-      lyrics: null,
       firstResized: false,
       view: 'detector'
     }
