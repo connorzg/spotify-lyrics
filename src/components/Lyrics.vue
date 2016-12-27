@@ -10,8 +10,43 @@
 </template>
 
 <script>
+  import Vue from 'vue'
+  import AsyncComputed from 'vue-async-computed'
+  import LyricsProvider from '../lyrics-provider'
+  import Strings from '../strings'
+
+  Vue.use(AsyncComputed)
+
   export default {
-    props: ['track', 'lyrics'],
+    components: { Spinner },
+    data () {
+      return {
+        lyrics: null,
+      }
+    },
+    props: ['track'],
+    asyncComputed: {
+      lyrics: {
+        get () {
+          return new Promise(function(resolve, reject) {
+            let lyricsProvider = new LyricsProvider()
+
+            lyricsProvider.getLyrics(
+              this.track.artists,
+              this.track.name,
+              function(error, lyrics) {
+                if (error) {
+                  resolve(Strings.LYRICS_NOT_FOUND)
+                } else {
+                  resolve(lyrics)
+                }
+              }.bind(this)
+            )
+          }.bind(this))
+        },
+        default: ''
+      }
+    }
   }
 </script>
 

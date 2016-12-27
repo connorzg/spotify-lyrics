@@ -3,24 +3,27 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400" rel="stylesheet">
 
     <transition name="component-fade" mode="out-in">
-      <component :is="view" :track="track" :trackId="trackId" :lyrics="lyrics">
+      <component :is="view"
+                 :track="track">
       </component>
     </transition>
   </div>
 </template>
 
 <script>
+import Vue from 'vue'
 import {webFrame} from 'electron'
 import {remote} from 'electron';
-import LyricsProvider from './lyrics-provider'
 import SpotifyAPI from './spotify-api'
-import Strings from './strings'
 
 import Detector from './components/Detector.vue'
 import Lyrics from './components/Lyrics.vue'
 
 export default {
-  components: { Detector, Lyrics },
+  components: {
+    'detector': Detector,
+    'lyrics': Lyrics
+  },
   data () {
     return {
       track: null,
@@ -41,7 +44,6 @@ export default {
     track: function() {
       if (this.track) {
         this.setView('lyrics')
-        this.refreshLyrics()
       } else {
         this.setView('detector')
       }
@@ -56,20 +58,6 @@ export default {
           this.track = trackInfo
         }
       }.bind(this))
-    },
-
-    refreshLyrics: function() {
-      this.lyricsProvider.getLyrics(
-        this.track.artists,
-        this.track.name,
-        function(error, lyrics) {
-          if (error) {
-            this.lyrics = Strings.LYRICS_NOT_FOUND
-          } else {
-            this.lyrics = lyrics
-          }
-        }.bind(this)
-      )
     },
 
     /* Hacks to fix HDPI font rendering issues on linux */
@@ -106,7 +94,6 @@ export default {
 
   created: function () {
     this.spotifyAPI = new SpotifyAPI()
-    this.lyricsProvider = new LyricsProvider()
 
     if (process.platform == 'linux') {
       this.fixLinuxRenderingIssue()

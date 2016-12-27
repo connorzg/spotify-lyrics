@@ -62,6 +62,7 @@ export default class LyricProvider {
                 setTimeout(this.searchLyrics.bind(this), 200)
               } else {
                 this.artistCandidates = null
+                console.log("got lyrics", lyrics)
                 this.responseCallback(null, lyrics)
                 this.responseCallback = null
               }
