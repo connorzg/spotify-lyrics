@@ -1,5 +1,8 @@
+import axios from 'axios'
 import ChartlyricsProvider from './lyrics-providers/chartlyrics'
 import LyricsWikia from './lyrics-providers/lyrics-wikia'
+
+axios.defaults.timeout = 1000
 
 export default class LyricProvider {
   constructor () {
