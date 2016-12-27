@@ -51,7 +51,13 @@ function notifyRendererTrackChanged(newTrackId) {
   if (mainWindow === null) return
 
   // Hack to communicate the new track id to the renderer process
-  mainWindow.webContents.executeJavaScript("window.app._mainProcess_setCurrentTrackId(\"" + newTrackId + "\")")
+  mainWindow.webContents.executeJavaScript(`
+    var event = new CustomEvent(
+      "on-track-changed",
+      {"detail": "${newTrackId}"}
+    )
+    window.dispatchEvent(event)
+  `)
 }
 
 function setupMonitor() {

@@ -1,6 +1,7 @@
 const path = require('path');
 
 const webpack = require('webpack');
+const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const Copy = require('copy-webpack-plugin');
 
 const nodeEnv = process.env.NODE_ENV || 'development';
@@ -8,7 +9,7 @@ const isProd = nodeEnv === 'production';
 
 module.exports = {
   devtool: isProd ? 'hidden-source-map' : 'cheap-eval-source-map',
-  entry: './lib/index.js',
+  entry: './src/index.js',
   output: {
     path: path.join(__dirname, 'app', 'dist'),
     filename: 'bundle.js'
@@ -24,10 +25,20 @@ module.exports = {
         }
       },
       {
-        test: /\.json/,
+        test: /\.json$/,
         loader: 'json-loader'
+      },
+      {
+        test: /\.vue$/,
+        loader: 'vue'
       }
     ]
+  },
+  vue: {
+    loaders: {
+      css: ExtractTextPlugin.extract("css"),
+      sass: ExtractTextPlugin.extract("css!sass")
+    }
   },
   resolve: {
     alias: {
@@ -42,10 +53,11 @@ module.exports = {
     }),
     new Copy([
       {
-        from: './assets',
+        from: './src/assets',
         to: './assets'
       }
-    ])
+    ]),
+    new ExtractTextPlugin("style.css")
   ],
   target: 'electron'
 };

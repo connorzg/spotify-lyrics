@@ -3,7 +3,11 @@
   "productName": "Lyrics for Spotify",
   "version": "1.1.0",
   "description": "Lyrics companion desktop app for Spotify",
-  "keywords": ["spotify", "lyrics", "desktop"],
+  "keywords": [
+    "spotify",
+    "lyrics",
+    "desktop"
+  ],
   "main": "app/index.js",
   "repository": {
     "type": "git",
@@ -21,7 +25,7 @@
     "json-loader": "0.5.4",
     "ps-node": "^0.1.4",
     "underscore": "^1.8.3",
-    "vue": "2.1.3",
+    "vue": "2.1.7",
     "xmldom": "^0.1.27",
     "xpath": "0.0.23"
   },
@@ -32,10 +36,18 @@
     "babel-preset-es2015": "6.18.0",
     "copy-webpack-plugin": "^4.0.1",
     "cross-env": "^3.1.3",
+    "css-loader": "0.26.1",
     "electron": "^1.4.12",
     "electron-builder": "^10.8.1",
+    "extract-text-webpack-plugin": "1.0.1",
     "mocha": "^3.2.0",
+    "node-sass": "4.1.1",
+    "sass-loader": "4.1.1",
     "spectron": "^3.4.0",
+    "style-loader": "0.13.1",
+    "vue-loader": "10.0.2",
+    "vue-style-loader": "1.0.0",
+    "vue-template-compiler": "2.1.7",
     "webpack": "^1.14.0"
   },
   "scripts": {
@@ -94,6 +106,8 @@
     }
   },
   "babel": {
-    "presets": ["es2015"]
+    "presets": [
+      "es2015"
+    ]
   }
 }

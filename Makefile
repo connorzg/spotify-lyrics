@@ -1,5 +1,8 @@
 all:
 
+clean:
+	rm -rf dist app/dist
+
 build:
 	make -C app/track-monitors/macos build
 
