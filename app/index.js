@@ -24,7 +24,7 @@ function createWindow () {
     height: 420,
     titleBarStyle: 'hidden-inset',
     title: 'Lyrics for Spotify.app',
-    frame: process.platform === 'darwin',
+    frame: false,
     transparent: true,
     icon: resolve(__dirname, 'static/icon.png'),
     backgroundColor: "#121314"
